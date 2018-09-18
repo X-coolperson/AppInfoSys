@@ -13,6 +13,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					<if test="querySoftwareName != null and querySoftwareName !='' ">
 						and softwareName like CONCAT('%',#{querySoftwareName},'%')
 					</if>
+					<if test="queryStatus != null">
+						and status = #{queryStatus}
+					</if>
 					<if test="queryFlatformId != null">
 						and flatFormId = #{queryFlatformId}
 					</if>
@@ -46,6 +49,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					<where>
 						<if test="querySoftwareName != null and querySoftwareName !='' ">
 							and softwareName like CONCAT('%',#{querySoftwareName},'%')
+						</if>
+						<if test="queryStatus != null">
+							and status = #{queryStatus}
 						</if>
 						<if test="queryFlatformId != null">
 							and flatFormId = #{queryFlatformId}
