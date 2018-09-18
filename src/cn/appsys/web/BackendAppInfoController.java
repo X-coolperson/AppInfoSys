@@ -32,6 +32,11 @@ public class BackendAppInfoController {
 	@Resource
 	private AppCategoryService appCategoryService;
 	
+	@RequestMapping("/check")
+	public  String  toAppcheck() {
+		return  "redirect:backend/appcheck";
+	}
+	
 	@ResponseBody
 	@RequestMapping("getclist/{pid}")
 	public String getCategoryList(@PathVariable Integer pid) {
