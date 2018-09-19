@@ -17,5 +17,12 @@ public interface AppInfoMapper {
 	int getAppInfoCount(QueryAppInfoVO queryAppInfoVO);
 
 	List<AppInfo> getAppInfoList(QueryAppInfoVO queryAppInfoVO);
+	/**
+	 * 
+	 * 根据id修改status
+	 * @param appinfoid
+	 * @param valueId
+	 */
+	void updateStatusByInfoId(@Param("appinfoid1")Integer appinfoid, @Param("status")Integer status);
 
 }

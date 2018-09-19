@@ -71,7 +71,7 @@ $(".modifyVersion").on("click",function(){
 		if(versionid == null || versionid == ""){
 			alert("该APP应用无版本信息，请先增加版本信息！");
 		}else{
-			window.location.href="appversionmodify?vid="+ versionid + "&aid="+ appinfoid;
+			window.location.href="appversionmodify?id="+ versionid;
 		}
 	}else{
 		alert("该APP应用的状态为：【"+obj.attr("statusname")+"】,不能修改其版本信息，只可进行【新增版本】操作！");
@@ -101,9 +101,11 @@ $(document).on("click",".saleSwichOpen,.saleSwichClose",function(){
 });
 
 var saleSwitchAjax = function(appId,obj){
+	var ss = path.value;
 	$.ajax({
 		type:"PUT",
-		url:appId+"/sale.json",
+		url:ss+"/dev/app/odd/"+obj.attr("appdataId")+"/"+obj.attr("appinfoid")+"/"+ obj.attr("saleSwitch"),
+		type:"Get",
 		dataType:"json",
 		success:function(data){
 			/*
@@ -116,9 +118,9 @@ var saleSwitchAjax = function(appId,obj){
 				if(data.resultMsg === "success"){//操作成功
 					if("open" === obj.attr("saleSwitch")){
 						//alert("恭喜您，【"+obj.attr("appsoftwarename")+"】的【上架】操作成功");
-						$("#appInfoStatus" + obj.attr("appinfoid")).html("已上架");
+						$("#appInfoStatus" + obj.attr("appinfoid")).html("rrrrr");
 						obj.className="saleSwichClose";
-						obj.html("下架");
+		 				obj.html("下架");
 						obj.attr("saleSwitch","close");
 						$("#appInfoStatus" + obj.attr("appinfoid")).css({
 							'background':'green',
@@ -128,9 +130,10 @@ var saleSwitchAjax = function(appId,obj){
 						});
 						$("#appInfoStatus" + obj.attr("appinfoid")).hide();
 						$("#appInfoStatus" + obj.attr("appinfoid")).slideDown(300);
+						
 					}else if("close" === obj.attr("saleSwitch")){
 						//alert("恭喜您，【"+obj.attr("appsoftwarename")+"】的【下架】操作成功");
-						$("#appInfoStatus" + obj.attr("appinfoid")).html("已下架");
+						$("#appInfoStatus" + obj.attr("appinfoid")).html("gggggg");
 						obj.className="saleSwichOpem";
 						obj.html("上架");
 						obj.attr("saleSwitch","open");

@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
@@ -33,9 +34,12 @@ public class BackendAppInfoController {
 	private AppCategoryService appCategoryService;
 	
 	@RequestMapping("/check")
-	public  String  toAppcheck() {
-		return  "redirect:backend/appcheck";
+	public  String  toAppcheck(Model model,@RequestParam Integer  aid, @RequestParam Integer  vid) {
+		
+		return  "backend/appcheck";
 	}
+	
+	
 	
 	@ResponseBody
 	@RequestMapping("getclist/{pid}")

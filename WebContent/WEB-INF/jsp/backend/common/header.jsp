@@ -191,3 +191,6 @@
        <!-- /top navigation -->
 		<div class="right_col" role="main">
 			<div class="">
+			 <!-- 存储了绝对路径 -->
+     <input type="hidden" id="path" name="path" value="${pageContext.request.contextPath }"/>
+     <input type="hidden" id="referer" name="referer" value="<%=request.getHeader("Referer")%>"/>

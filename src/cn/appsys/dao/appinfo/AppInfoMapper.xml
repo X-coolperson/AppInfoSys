@@ -3,7 +3,11 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.appsys.dao.appinfo.AppInfoMapper">
+	<!-- void updateStatusByInfoId(@Param("appinfoid")Integer appinfoid, @Param("valueId")Integer status); -->
 	
+	<update id="updateStatusByInfoId">
+		update app_info set status = #{status}  where id = #{appinfoid1}
+	</update>
 	<!-- int getAppInfoCount(); -->
 	<!-- int getAppInfoCount(QueryAppInfoVO queryAppInfoVO); -->
 	<select id="getAppInfoCount" resultType="_int" parameterType="QueryAppInfoVO">
@@ -40,6 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			i.updateDate,i.devId,i.appInfo,i.onSaleDate,i.offSaleDate,i.downloads,i.createdBy,i.creationDate,
 			i.modifyBy,i.modifyDate,i.logoPicPath,logoLocPath,
 			i.status,(select d.valueName from data_dictionary d where d.valueId = i.status and d.typeCode = 'APP_STATUS') as statusName,
+			(select d.id from data_dictionary d where d.valueId = i.status and d.typeCode = 'APP_STATUS') as dataId,
 			i.flatformId,(select d.valueName from data_dictionary d where d.valueId = i.flatformId and d.typeCode = 'APP_FLATFORM') as flatformName,
 			i.versionId,(select v.versionNo from app_version v where v.id = i.versionId) as versionNo,
 			i.categoryLevel1,(select c.categoryName from app_category c where c.id = i.categoryLevel1) as categoryLevel1Name,
