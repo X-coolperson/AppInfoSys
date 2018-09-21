@@ -18,6 +18,23 @@ public class AppInfoServiceImpl implements AppInfoService {
 
 	@Resource
 	private AppInfoMapper appInfoMapper;
+	
+	/* 保存修改信息
+	 * @see cn.appsys.service.appinfo.AppInfoService#uploadAppInfo(cn.appsys.pojo.AppInfo)
+	 */
+	@Override
+	public void uploadAppInfo(AppInfo appInfo) {
+		appInfoMapper.uploadAppInfo(appInfo);
+		
+	}
+
+	/* 根据id查询
+	 * @see cn.appsys.service.appinfo.AppInfoService#getInfoById(java.lang.Integer)
+	 */
+	@Override
+	public AppInfo getInfoById(Integer id) {
+		return appInfoMapper.getInfoById(id);
+	}
 
 	@Override
 	public void getAppInfoList(PageBean<AppInfo> pageBean,QueryAppInfoVO queryAppInfoVO) {

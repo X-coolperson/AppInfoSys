@@ -25,4 +25,10 @@ public interface AppInfoMapper {
 	 */
 	void updateStatusByInfoId(@Param("appinfoid1")Integer appinfoid, @Param("status")Integer status);
 
+	/*根据id查询信息*/
+	AppInfo getInfoById(@Param("id")Integer id);
+	/*保存修改信息*/
+	void uploadAppInfo(AppInfo appInfo);
+	
+	
 }

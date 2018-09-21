@@ -41,6 +41,68 @@ public class DevAppInfoController {
 	@Resource
 	private AppVersionService  appVersionService;
 	
+	/**保存修改信息
+	 * @return
+	 */
+	@RequestMapping("appinfomodify/appinfomodifysave")
+	public String appSave(@ModelAttribute AppInfo appInfo){
+		appInfoService.uploadAppInfo(appInfo);
+		return "redirect:/dev/app/list";
+	}
+	
+	
+	/**根据parentId查询出相应的分类级别列表
+	 * @param pid
+	 * @return
+	 * appinfomodify/categorylevellist.json/null
+	 */
+	@ResponseBody
+	@RequestMapping("appinfomodify/categorylevellist/{pid}")
+	public String categoryList(@PathVariable Integer pid){
+		List<AppCategory> categoryList = appCategoryService.getAppCategoryListByParentId(pid == 0 ? null : pid); 
+		return JSON.toJSONString(categoryList);
+	}
+	
+	/**加载平台列表
+	 * @param pid
+	 * @return
+	 * /appinfomodify/datadictionarylist.json/APP_FLATFORM
+	 */
+	@ResponseBody
+	@RequestMapping("appinfomodify/datadictionarylist.json/{FM}")
+	public String getCategoryLevelList(@PathVariable String FM) {
+		List<DataDictionary> flatFormList = dataDictionaryService.getDataDictionaryListByTypeCode(FM);
+		return JSON.toJSONString(flatFormList);
+	}
+	
+
+	/**去修改页面
+	 * @param model
+	 * @param aid
+	 * @return
+	 */
+	@RequestMapping("appinfomodify/{id}")
+	public String toModify(Model model,@PathVariable Integer id){
+		AppInfo  appInfo=appInfoService.getInfoById(id);
+		model.addAttribute("appInfo", appInfo);
+		return "developer/appinfomodify";
+	}
+	
+	
+	/**查看信息
+	 * @return
+	 */
+	@RequestMapping("appview/{id}")
+	public String showInfoByid(Model model ,@PathVariable Integer id){
+	//基础信息查询
+	AppInfo  appInfo=appInfoService.getInfoById(id);
+	//版本查询
+	List<AppVersion>  appVersionList=appVersionService..getAppVersionListById(id);;
+	
+		model.addAttribute("appInfo", appInfo);
+		model.addAttribute("appVersionList", appVersionList);
+		return "developer/appinfoview";
+	}
 	
 	/**
 	 * 

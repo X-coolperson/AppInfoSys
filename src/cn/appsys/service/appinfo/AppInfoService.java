@@ -12,5 +12,17 @@ public interface AppInfoService {
 	 * @param queryAppInfoVO
 	 */
 	void getAppInfoList(PageBean<AppInfo> pageBean,QueryAppInfoVO queryAppInfoVO);
+	
+	/**根据id进行查询
+	 * @param aid
+	 * @return
+	 */
+	AppInfo getInfoById(Integer id);
+
+	/**保存修改信息
+	 * @param appInfo
+	 */
+	void uploadAppInfo(AppInfo appInfo);
+ 
 
 }
