@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper   namespace="cn.appsys.dao.appversion.AppVersionMapper">
+<!-- List<AppVersion> getAppVersionListById(@Param("id")Integer id); -->
+<select id="getAppVersionListById"  resultType="AppVersion">
+	select v.*,i.softwareName  as appName,i.APKName  as apkFileName 
+		from app_version v,app_info  i  
+			where  v.id = i.versionId and v.id = #{id}
+
+</select>
+
+<!-- int updateVersionInfo(@Param("id")Integer id,@Param("versionSize")Integer versionSize, @Param("versionInfo")String versionInfo); -->
+<update id="updateVersionInfo">
+	update  app_version  set versionSize = #{versionSize},versionInfo  = #{versionInfo}  where   id = #{id}  
+</update>
+</mapper>

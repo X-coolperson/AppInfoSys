@@ -25,6 +25,19 @@ public class AppInfo {
 	private Date modifyDate;//更新时间
 	
 	private String statusName;//app状态名称
+	private Integer dataId;
+	/**
+	 * @return the dataId
+	 */
+	public Integer getDataId() {
+		return dataId;
+	}
+	/**
+	 * @param dataId the dataId to set
+	 */
+	public void setDataId(Integer dataId) {
+		this.dataId = dataId;
+	}
 	private String flatformName;//app所属平台名称
 	private String categoryLevel3Name;//所属三级分类名称
 	private String devName;//开发者名称
